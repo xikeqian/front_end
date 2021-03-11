@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实现三列布局的方式</title>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
+      .seperate-line {
+        margin-top: 40px;
+      }
+      .container_1 {
+        height: 100px;
+        position: relative;
+      }
+      .container-1_column_1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        background-color: blueviolet;
+        height: 100px;
+      }
+      .container-1_column_3 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100px;
+        background-color: brown;
+      }
+      .container-1_column_2 {
+        height: 100px;
+        margin-left: 200px;
+        margin-right: 200px;
+        background-color: crimson;
+      }
+
+
+      .contaienr_2 {
+        height: 100px;
+      }
+      .container-2_column_1 {
+        float: left;
+        width: 200px;
+        background-color: crimson;
+        height: 100px;
+      }
+      .container-2_column_2 {
+        float: right;
+        width: 200px;
+        background-color: currentColor;
+        height: 100px;
+      }
+      .container-2_column_3 {
+        margin-left: 200px;
+        margin-right: 200px;
+        background-color: cyan;
+        height: 100px;
+      }
+
+      .container_3 {
+        padding: 0 300px 0 200px;
+        overflow: hidden;
+        border: 1px solid black;
+      }
+      .container-3_column_1 {
+        float: left;
+        width: 100%;
+        background: #f00;
+      }
+      .container-3_column_2 {
+        width: 200px;
+        background: #0f0;
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+      }
+      .container-3_column_3 {
+        width: 300px;
+        background: #00f;
+        float: left;
+        margin-left: -300px;
+        position: relative;
+        right: -300px;
+      }
+
+      .container-4_column_1 {
+        float: left;
+        width: 100%;
+        background-color: cyan;
+        height: 100px;
+      }
+      .container-4_column_1 > div {
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+      .container-4_column_2 {
+        float: left;
+        width: 200px;
+        margin-left: -100%;
+        background-color: darkblue;
+        height: 100px;
+      }
+      .container-4_column_3 {
+        float: left;
+        width: 200px;
+        margin-left: -200px;
+        background-color: darkgoldenrod;
+        height: 100px;
+      }
+
+      .container_5 {
+        display: flex;
+        height: 100px;
+      }
+      .container-5_column_1 {
+        flex: 0 0 200px;
+        background-color: darkgoldenrod;
+      }
+      .container-5_column_2 {
+        flex: 1 1;
+        background-color: darkgray;
+      }
+      .container-5_column_3 {
+        flex: 0 0 200px;
+        background-color: darkgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <p>position + margin-left + margin-right</p>
+    <div class="container_1">
+      <div class="container-1_column_1"></div>
+      <div class="container-1_column_2"></div>
+      <div class="container-1_column_3"></div>
+    </div>
+    <p class="seperate-line">通过 float + margin</p>
+    <div class="contaienr_2">
+      <div class="container-2_column_1"></div>
+      <div class="container-2_column_2"></div>
+      <div class="container-2_column_3"></div>
+    </div>
+    <p class="seperate-line">圣杯布局</p>
+    <div class="container_3">
+      <div class="container-3_column_1">中间内容</div>
+      <div class="container-3_column_2">左侧区域</div>
+      <div class="container-3_column_3">右侧区域</div>
+    </div>
+    <p class="seperate-line">双飞翼布局</p>
+    <div class="container_4">
+      <div class="container-4_column_1">
+        <div class="container-4_column_1_content">hello world</div>
+      </div>
+      <div class="container-4_column_2">你好</div>
+      <div class="container-4_column_3">DJ</div>
+    </div>
+    <p class="seperate-line">flex 布局</p>
+    <div class="container_5">
+      <div class="container-5_column_1"></div>
+      <div class="container-5_column_2"></div>
+      <div class="container-5_column_3"></div>
+    </div>
+  </body>
+</html>

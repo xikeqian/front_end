@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现两栏布局的方式</title>
+</head>
+<body>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      width: 100%;
+      height: 100px;
+    }
+    .left-column {
+      float: left;
+      width: 50%;
+      height: 100%;
+      background-color: greenyellow;
+    }
+    .right-column {
+      margin-left: 50%;
+      height: 100%;
+      background-color: yellowgreen;
+    }
+    .seperate-line {
+      margin-top: 40px;
+    }
+
+    .container_2 {
+      width: 100%;
+      height: 100px;
+    }
+    .left-column_2 {
+      width: 300px;
+      float: right;
+      background-color: yellow;
+      height: 100px;
+    }
+    .right-column_2 {
+      background-color: aqua;
+      height: 100px;
+      margin-right: 300px;
+    }
+
+    .container_3 {
+      width: 100%;
+      height: 100px;
+    }
+    .left-column_3 {
+      width: 300px;
+      float: left;
+      background-color: yellow;
+      height: 100px;
+    }
+    .right-column_3 {
+      overflow: hidden;
+      background-color: aqua;
+      height: 100px;
+    }
+
+    .container_4 {
+      overflow: hidden; /* 子元素为浮动元素时，由于父级元素没有高度，下面的元素会顶上去，造成页面的塌陷。因此，需要给父级加个overflow:hidden属性，这样父级的高度就随子级容器及子级内容的高度而自适应。 */
+    }
+    .left-column_4 {
+      float: left;
+      width: 100%;
+      margin-right: -200px;
+      height: 100px;
+      background-color: yellow;
+    }
+    .right-column_4 {
+      float: left;
+      height: 100px;
+      width: 200px;
+      background-color: aqua;
+    }
+
+    .container_5 {
+      display: flex;
+    }
+    .left-column_5 {
+      float: left;
+      width: 100%;
+      background: #0f0;
+      height: 100px;
+    }
+    .right-column_5 {
+      float: left;
+      width: 300px;
+      margin-left: -300px;
+      background: #00f;
+      height: 100px;
+    }
+
+    .contaienr_6 {
+      display: flex;
+    }
+    .left-column_6 {
+      flex: 0 0 200px;
+      background-color: aqua;
+      height: 100px;
+    }
+    .right-column_6 {
+      flex: 1 1;
+      background-color: azure;
+      height: 100px;
+    }
+    .container_7 {
+      position: relative;
+      height: 100px;
+    }
+    .left-column_7 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 200px;
+      background-color: azure;
+    }
+    .right-column_7 {
+      margin-left: 200px;
+      height: 100px;
+      background-color: blueviolet;
+    }
+  </style>
+  <p>1：左 float，然后右 margin-left（右边自适应）</p>
+  <div class="container">
+    <div class="left-column"></div>
+    <div class="right-column"></div>
+  </div>
+  <p class="seperate-line">2:右 float，margin-right</p>
+  <div class="container_2">
+    <div class="left-column_2"></div>
+    <div class="right-column_2"></div>
+  </div>
+  <p class="seperate-line">BFC + float</p>
+  <div class="container_3">
+    <div class="left-column_3"></div>
+    <div class="right-column_3"></div>
+  </div>
+  <p class="seperate-line">float + 负 margin</p>
+  <div class="container_4">
+    <div class="left-column_4"></div>
+    <div class="right-column_4"></div>
+  </div>
+  <p class="seperate-line">圣杯布局实现两栏布局</p>
+  <div class="container_5">
+    <div class="left-column_5"></div>
+    <div class="right-column_5"></div>
+  </div>
+  <p class="seperate-line">flex 实现两栏布局</p>
+  <div class="contaienr_6">
+    <div class="left-column_6"></div>
+    <div class="right-column_6"></div>
+  </div>
+  <p class="seperate-line">position + margin</p>
+  <div class="container_7">
+    <div class="left-column_7"></div>
+    <div class="right-column_7"></div>
+  </div>
+</body>
+</html>

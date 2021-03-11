@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS实现自适应正方形、等宽高比矩形--伪元素设置 margin-top</title>
+</head>
+<body>
+  <style>
+    .inner {
+      width: 100px;
+      overflow: hidden;
+      background-color: greenyellow;
+    }
+    .inner:after {
+      content: '';
+      width: 100%;
+      margin-top: 100%;
+      display: block;
+    }
+  </style>
+  <div class="inner"></div>
+</body>
+</html>
