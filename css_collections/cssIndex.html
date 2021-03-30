@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css z-index</title>
+</head>
+
+<body>
+    <p>
+        当您指定一个元素z-index:0（或任何其他整数）时，您正在创建一个新的堆栈上下文。z-index:auto不会创建堆叠上下文。这一点很重要，因为具有auto的父级将出现在具有-1的子级前面，而具有0的父级将出现在具有-1的子级后面（请参见代码段）。
+        每个堆叠上下文将根据<a
+            href="https://stackoverflow.com/questions/32513540/understanding-z-index-stacking-order">堆叠顺序</a>对其内容进行排序。
+        同样重要的是要注意，z-index只对定位的元素起作用。定位元素不是初始位置：static，即relative，absolute, fixed(以position:
+        fixed使它们无论z-index值如何都将始终建立堆栈上下文)等等。
+        此外，您应该知道，对某些css属性（如filter、transform和opacity）的更改也可以创建新的堆栈上下文。请参阅下面的参考资料以了解更多信息。<br>
+
+        Additional Information<br>
+
+        <a href="https://stackoverflow.com/a/16148341/3550318">CSS properties that create a stacking context</a><br>
+
+        See how <a href="https://philipwalton.com/articles/what-no-one-told-you-about-z-index/">opacity can affect the
+            stacking context</a><br>
+
+        Read <a
+            href="https://webdesign.tutsplus.com/articles/what-you-may-not-know-about-the-z-index-property--webdesign-16892">another
+            in-depth article on stacking order.</a>
+    </p>
+
+
+    <style>
+        .container p {
+            position: absolute;
+            top: 100%;
+            width: 200px;
+            margin: 0
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            background: none;
+        }
+
+        .box {
+            position: relative;
+            background: lightgrey;
+            width: 100px;
+            height: 100px;
+            padding: 15px;
+        }
+
+        .red {
+            background: lightcoral;
+        }
+
+        .z-1 {
+            z-index: -1;
+        }
+
+        .z0 {
+            z-index: 0;
+        }
+
+        .example-2 {
+            position: relative;
+            margin-top: 100px;
+        }
+        .example-2 div {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+        }
+
+        .one,
+        .two,
+        .three,
+        .four {
+            position: absolute;
+        }
+
+        .one {
+            background: #f00;
+            outline: 5px solid #000;
+            top: 100px;
+            left: 200px;
+            z-index: 10;
+        }
+
+        .two {
+            background: #0f0;
+            outline: 5px solid #000;
+            top: 50px;
+            left: 75px;
+            z-index: 100;
+        }
+
+        .three {
+            background: #0ff;
+            outline: 5px solid #000;
+            top: 125px;
+            left: 25px;
+            z-index: 150;
+        }
+
+        .four {
+            background: #00f;
+            outline: 5px solid #ff0;
+            top: 200px;
+            left: 350px;
+            z-index: 50;
+        }
+    </style>
+    <div class="container">
+        <div class="box">
+            z auto (initial)
+            <div class="box red z-1">z -1</div>
+        </div>
+        <p>Parent: auto / Child: -1</p>
+    </div>
+
+    <div class="container">
+        <div class="box z0">
+            z 0
+            <div class="box red z-1">z -1</div>
+        </div>
+        <p>Parent: 0 / Child: -1</p>
+    </div>
+
+    <div class="example-2">
+        <div class="one">
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+        <div class="four"></div>
+    </div>
+</body>
+
+</html>
